@@ -3,10 +3,7 @@ package Taller11;
 import java.io.*;
 import java.util.*;
 
-
-
 public class App {
-
 	
 	//primera lectura
 	private static ArrayList<String> ExperimentoID = new ArrayList<>();
@@ -20,17 +17,11 @@ public class App {
 	private static ArrayList<String> predExpID = new ArrayList<>();
 	private static ArrayList<Integer> predValorReal = new ArrayList<>();
 	private static ArrayList<Integer> predValorPredicho = new ArrayList<>();
-
-	
 	
 	public static void main(String[] args) throws FileNotFoundException {
-
 		
 		leerarchivo();
-		
-		menu();
-		
-		
+		menu();		
 		
 	}
 	private static void menu() {
@@ -39,17 +30,17 @@ public class App {
 		int opcion;
 
 		do {
-		    System.out.println("---- Menú Principal ----");
-		    System.out.println("1. Usuario");
-		    System.out.println("2. Administrador");
-		    System.out.println("0. Salir");
-		    System.out.print("Elige una opción: ");
-		    opcion = sc.nextInt();
+			System.out.println("---- Menú Principal ----");
+			System.out.println("1. Usuario");
+			System.out.println("2. Administrador");
+			System.out.println("0. Salir");
+			System.out.print("Elige una opción: ");
+			opcion = sc.nextInt();
 
-		    switch(opcion) {
-		        case 1:
-		            menuUsuario(sc);
-		            break;
+			switch(opcion) {
+				case 1:
+		        	menuUsuario(sc);
+		        	break;
 		        case 2:
 		            menuAdminn(sc);
 		            break;
@@ -145,7 +136,7 @@ public class App {
 		
 		s.close();
 		
-		 s = new Scanner(new File("metricas.txt"));
+		s = new Scanner(new File("metricas.txt"));
 		
 		
 		while(s.hasNextLine()) {
@@ -161,28 +152,22 @@ public class App {
 		
 		s.close();
 		
-		 s = new Scanner(new File("predicciones.txt"));
-		 
-		 
-			
-			
+		s = new Scanner(new File("predicciones.txt"));
+	
 		while(s.hasNextLine()) {
 			
 			String l = s.nextLine().trim();
 			
 			String [] p = l.split(";");
-		
-		
 			String IdExperimento = p[0];
 			int Valor1 = Integer.parseInt(p[1]);
 			int Valor2 = Integer.parseInt(p[2]);
 			
-
-		       predExpID.add(IdExperimento);
-		        predValorReal.add(Valor1);
-		        predValorPredicho.add(Valor2);
+		    predExpID.add(IdExperimento);
+		    predValorReal.add(Valor1);
+		    predValorPredicho.add(Valor2);
 			
-			}
+		}
 	}
 		
 }
