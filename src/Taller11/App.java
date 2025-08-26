@@ -14,6 +14,7 @@ public class App {
 	private static ArrayList<String> metricaslista = new ArrayList<>();
 	//tercera lectura
 
+	private static ArrayList<Integer> cantExp = new ArrayList<>();
 	private static ArrayList<String> predExpID = new ArrayList<>();
 	private static ArrayList<Integer> predValorReal = new ArrayList<>();
 	private static ArrayList<Integer> predValorPredicho = new ArrayList<>();
@@ -95,11 +96,27 @@ public class App {
 		
 	}
 	private static void mostrarMetricas(Scanner sc) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 	private static void mostrarMatrizConfusion(Scanner sc) {
-		
+		int[][] matrizexp = new int[4][4];
+
+		int[] sumas = {0,0,0,0};
+		for (int i = 0; i < predExpID.size(); i++){
+			if (predValorReal.get(i) == 1 && predValorPredicho.get(i) == 1) {
+				sumas[0]++; // TP
+			}
+			else if (predValorReal.get(i) == 0 && predValorPredicho.get(i) == 1){
+				sumas[1]++; // FP
+			}
+			else if(predValorReal.get(i) == 0 && predValorPredicho.get(i) == 0){
+				sumas[2]++; // TN
+			}
+			else if (predValorReal.get(i) == 1 && predValorPredicho.get(i) == 0){
+				sumas[3]++; // FN
+			}
+		}
 	}
 
 	private static void listarExperimentos() {
@@ -145,7 +162,9 @@ public class App {
 		}
 		
 		s.close();
-		
+		for(int i = 0; i < 4; i++){
+			cantExp.add(0);
+		}
 		s = new Scanner(new File("predicciones.txt"));
 	
 		while(s.hasNextLine()) {
@@ -154,6 +173,13 @@ public class App {
 			
 			String [] p = l.split(";");
 			String IdExperimento = p[0];
+			String[] numsExperimentos = {"1","2","3","4"};
+			for (String num : numsExperimentos){
+				if (IdExperimento.contains(num)){
+					cantExp.set(Integer.valueOf(num)-1, cantExp.get(Integer.valueOf(num)-1) +1);
+					break;
+				}
+			}
 			int Valor1 = Integer.parseInt(p[1]);
 			int Valor2 = Integer.parseInt(p[2]);
 			
@@ -161,7 +187,6 @@ public class App {
 		    predValorReal.add(Valor1);
 		    predValorPredicho.add(Valor2);
 			
-		s.close();
 		}
 	}
 }
