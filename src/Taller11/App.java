@@ -42,7 +42,7 @@ public class App {
 		        	menuUsuario(sc);
 		        	break;
 		        case 2:
-		            menuAdminn(sc);
+		            menuAdmin(sc);
 		            break;
 		        case 0:
 		            System.out.println("Saliendo...");
@@ -50,14 +50,13 @@ public class App {
 		        default:
 		            System.out.println("Opción inválida.");
 		    }
+
 		} while(opcion != 0);
-		
-		
-		
 	}
-	private static void menuAdminn(Scanner sc) {
+	private static void menuAdmin(Scanner sc) {
 
 	}
+
 	private static void menuUsuario(Scanner sc) {
 	    int opcion;
 	    do {
@@ -100,12 +99,12 @@ public class App {
 		
 	}
 	private static void mostrarMatrizConfusion(Scanner sc) {
-		// TODO Auto-generated method stub
 		
 	}
+
 	private static void listarExperimentos() {
 
-		for(int i = 0 ; i < ExperimentoID .size() ; i++) {
+		for(int i = 0 ; i < ExperimentoID.size() ; i++) {
 			
 			System.out.println("El Experimento " + ExperimentoID.get(i) + " y su descripcion: " +  ExperimentoDescripcion.get(i));
 			
@@ -115,10 +114,10 @@ public class App {
 		System.out.println();
 		
 	}
-	private static void leerarchivo() throws FileNotFoundException {
 
+	private static void leerarchivo() throws FileNotFoundException 
+	{
 		Scanner s = new Scanner(new File("experimentos.txt"));
-		
 		
 		while(s.hasNextLine()) {
 			
@@ -128,16 +127,12 @@ public class App {
 			String Descripcion = p[1];
 			
 			ExperimentoID.add(Id);
-			ExperimentoDescripcion .add(Descripcion);
-			System.out.println("Hola diego");
-			
+			ExperimentoDescripcion.add(Descripcion);
 			
 		}
 		
 		s.close();
-		
 		s = new Scanner(new File("metricas.txt"));
-		
 		
 		while(s.hasNextLine()) {
 			
@@ -147,7 +142,6 @@ public class App {
 				metricaslista.add(l);
 				
 			}
-
 		}
 		
 		s.close();
@@ -167,9 +161,7 @@ public class App {
 		    predValorReal.add(Valor1);
 		    predValorPredicho.add(Valor2);
 			
+		s.close();
 		}
 	}
-
-	private static void nada(){};
-		
 }
