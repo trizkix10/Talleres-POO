@@ -51,7 +51,7 @@ public class App {
 		            menuUsuario(sc);
 		            break;
 		        case 2:
-		            menuAdmin(sc);
+		            menuAdminn(sc);
 		            break;
 		        case 0:
 		            System.out.println("Saliendo...");
@@ -64,7 +64,7 @@ public class App {
 		
 		
 	}
-	private static void menuAdmin(Scanner sc) {
+	private static void menuAdminn(Scanner sc) {
 
 	}
 	private static void menuUsuario(Scanner sc) {
@@ -138,6 +138,7 @@ public class App {
 			
 			ExperimentoID.add(Id);
 			ExperimentoDescripcion .add(Descripcion);
+			System.out.println("Hola diego");
 			
 			
 		}
@@ -161,6 +162,8 @@ public class App {
 		s.close();
 		
 		 s = new Scanner(new File("predicciones.txt"));
+		 
+		 
 			
 			
 		while(s.hasNextLine()) {
