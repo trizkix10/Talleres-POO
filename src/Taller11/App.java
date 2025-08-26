@@ -102,19 +102,23 @@ public class App {
 	private static void mostrarMatrizConfusion(Scanner sc) {
 		int[][] matrizexp = new int[4][4];
 
-		int[] sumas = {0,0,0,0};
-		for (int i = 0; i < predExpID.size(); i++){
-			if (predValorReal.get(i) == 1 && predValorPredicho.get(i) == 1) {
-				sumas[0]++; // TP
-			}
-			else if (predValorReal.get(i) == 0 && predValorPredicho.get(i) == 1){
-				sumas[1]++; // FP
-			}
-			else if(predValorReal.get(i) == 0 && predValorPredicho.get(i) == 0){
-				sumas[2]++; // TN
-			}
-			else if (predValorReal.get(i) == 1 && predValorPredicho.get(i) == 0){
-				sumas[3]++; // FN
+		for (int exp : cantExp ){
+			int[] sumas = {0,0,0,0};
+			int i = 0;
+			while (i < exp){
+				if (predValorReal.get(i) == 1 && predValorPredicho.get(i) == 1) {
+					sumas[0]++; // TP
+				}
+				else if (predValorReal.get(i) == 0 && predValorPredicho.get(i) == 1){
+					sumas[1]++; // FP
+				}
+				else if(predValorReal.get(i) == 0 && predValorPredicho.get(i) == 0){
+					sumas[2]++; // TN
+				}
+				else if (predValorReal.get(i) == 1 && predValorPredicho.get(i) == 0){
+					sumas[3]++; // FN
+				}
+				i++;
 			}
 		}
 	}
@@ -124,7 +128,6 @@ public class App {
 		for(int i = 0 ; i < ExperimentoID.size() ; i++) {
 			
 			System.out.println("El Experimento " + ExperimentoID.get(i) + " y su descripcion: " +  ExperimentoDescripcion.get(i));
-			
 			
 		}
 		
@@ -174,19 +177,20 @@ public class App {
 			String [] p = l.split(";");
 			String IdExperimento = p[0];
 			String[] numsExperimentos = {"1","2","3","4"};
+			int Valor1 = Integer.parseInt(p[1]);
+			int Valor2 = Integer.parseInt(p[2]);
+
 			for (String num : numsExperimentos){
 				if (IdExperimento.contains(num)){
 					cantExp.set(Integer.valueOf(num)-1, cantExp.get(Integer.valueOf(num)-1) +1);
 					break;
 				}
 			}
-			int Valor1 = Integer.parseInt(p[1]);
-			int Valor2 = Integer.parseInt(p[2]);
-			
 		    predExpID.add(IdExperimento);
 		    predValorReal.add(Valor1);
 		    predValorPredicho.add(Valor2);
-			
+		
 		}
+		s.close();
 	}
 }
